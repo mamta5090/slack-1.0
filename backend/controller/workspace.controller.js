@@ -170,10 +170,10 @@ export const getAllWorkspaces = async (req, res) => {
 
     // find workspaces where user is owner or member
     const workspaces = await Workspace.find({
-      $or: [
-        { owner: req.userId },
-        { members: req.userId }
-      ]
+     $or: [
+    { owner: req.userId },
+    { members: req.userId }
+  ]
     }).populate("members", "email name");
 
     return res.status(200).json({ workspaces });
